@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CET - Custom Edit Texts</string>
+    <string name="usd_symbol">$</string>
+    <string name="euro_symbol">€</string>
+    <string name="yuan_symbol">¥</string>
+    <string name="pound_symbol">£</string>
+    <string name="cents_symbol">¢</string>
+    <string name="bitcoins_symbol">BTC</string>
+    <string name="bitcoins_text">Bitcoins</string>
+    <string name="whatever_text">Whatever</string>
+    <string-array name="currencies_sample">
+        <item>@string/usd_symbol</item>
+        <item>@string/euro_symbol</item>
+        <item>@string/yuan_symbol</item>
+        <item>@string/pound_symbol</item>
+        <item>@string/cents_symbol</item>
+        <item>@string/bitcoins_symbol</item>
+        <item>@string/bitcoins_text</item>
+        <item>@string/whatever_text</item>
+    </string-array>
+</resources>

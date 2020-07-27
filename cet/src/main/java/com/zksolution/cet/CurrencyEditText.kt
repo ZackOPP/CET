@@ -14,7 +14,7 @@ class CurrencyEditText(context: Context, attrs: AttributeSet?) : AppCompatEditTe
     private var decimalPlaces = 0
 
     private val currentLocale = LocaleListCompat.getDefault()[0]
-    private val integerFormat = NumberFormat.getIntegerInstance(currentLocale)
+    private val integerFormat = NumberFormat.getIntegerInstance(currentLocale).apply { maximumFractionDigits = 0 }
     private val decimalFormatSymbols = DecimalFormatSymbols.getInstance(currentLocale)
     private val groupingSeparator = decimalFormatSymbols.groupingSeparator.toString()
     private val decimalSeparator = decimalFormatSymbols.decimalSeparator.toString()
@@ -32,10 +32,6 @@ class CurrencyEditText(context: Context, attrs: AttributeSet?) : AppCompatEditTe
 
     init {
         setAttributes(attrs)
-    }
-
-    init {
-        integerFormat.maximumFractionDigits = 0
 
         filters = arrayOf(
             object : InputFilter {

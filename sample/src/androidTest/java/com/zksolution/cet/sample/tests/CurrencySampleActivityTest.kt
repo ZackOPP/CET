@@ -1,28 +1,40 @@
-package com.zksolution.cet.sample
+package com.zksolution.cet.sample.tests
 
 import androidx.test.rule.ActivityTestRule
+import com.zksolution.cet.sample.R
+import com.zksolution.cet.sample.SampleActivity
+import com.zksolution.cet.sample.robots.BaseEditTextRobot
+import com.zksolution.cet.sample.robots.CurrencySpinnerRobot
+import com.zksolution.cet.sample.utils.LocaleHelper
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.DisplayName
 
-class SampleActivityTest {
+class CurrencySampleActivityTest {
 
     @get:Rule
     val rule = ActivityTestRule(SampleActivity::class.java)
 
-    private val localeHelper = LocaleHelper(defaultGroupingSeparator = ",", defaultDecimalSeparator = ".")
-
-    private val currencySpinnerRobot = CurrencySpinnerRobot()
-    private val noDecimalCurrencyRobot = BaseCurrencyRobot(R.id.noDecimalCurrencyEditText)
-    private val decimalCurrencyRobot = BaseCurrencyRobot(R.id.decimalCurrencyEditText)
-    private val insideTextInputLayoutCurrencyRobot = BaseCurrencyRobot(R.id.insideTextInputLayoutCurrencyEditText)
+    private val localeHelper =
+        LocaleHelper(
+            defaultGroupingSeparator = ",",
+            defaultDecimalSeparator = "."
+        )
+    private val currencySpinnerRobot =
+        CurrencySpinnerRobot()
+    private val noDecimalCurrencyRobot =
+        BaseEditTextRobot(R.id.noDecimalCurrencyEditText)
+    private val decimalCurrencyRobot =
+        BaseEditTextRobot(R.id.decimalCurrencyEditText)
+    private val insideTextInputLayoutCurrencyRobot =
+        BaseEditTextRobot(R.id.insideTextInputLayoutCurrencyEditText)
 
     @Test
     @DisplayName("Given valid input within decimalCurrencyText then assert expected value")
     fun testNoDecimalCurrencyValidInput() {
         noDecimalCurrencyRobot.apply {
             type("123456789")
-            checkText(localeHelper.applyTo("123,456,789"))
+            checkText(localeHelper.applyToCurrency("123,456,789"))
         }
     }
 
@@ -31,7 +43,7 @@ class SampleActivityTest {
     fun testNoDecimalCurrencyInvalidInput() {
         noDecimalCurrencyRobot.apply {
             type("123456789.45")
-            checkText(localeHelper.applyTo("12,345,678,945"))
+            checkText(localeHelper.applyToCurrency("12,345,678,945"))
         }
     }
 
@@ -42,7 +54,7 @@ class SampleActivityTest {
             type("123456789")
             pressDeleteKey(4)
             type("00")
-            checkText(localeHelper.applyTo("1,234,500"))
+            checkText(localeHelper.applyToCurrency("1,234,500"))
         }
     }
 
@@ -51,7 +63,7 @@ class SampleActivityTest {
     fun testDecimalCurrencyValidInput() {
         decimalCurrencyRobot.apply {
             type("123456789.45")
-            checkText(localeHelper.applyTo("123,456,789.45"))
+            checkText(localeHelper.applyToCurrency("123,456,789.45"))
         }
     }
 
@@ -60,7 +72,7 @@ class SampleActivityTest {
     fun testDecimalCurrencyInvalidInput() {
         decimalCurrencyRobot.apply {
             type("123456789.4533")
-            checkText(localeHelper.applyTo("123,456,789.45"))
+            checkText(localeHelper.applyToCurrency("123,456,789.45"))
         }
     }
 
@@ -71,7 +83,7 @@ class SampleActivityTest {
             type("123456789.4533")
             pressDeleteKey(5)
             type(".00")
-            checkText(localeHelper.applyTo("1,234,567.00"))
+            checkText(localeHelper.applyToCurrency("1,234,567.00"))
         }
     }
 
@@ -80,7 +92,7 @@ class SampleActivityTest {
     fun testInsideTextInputLayoutCurrencyValidInput() {
         insideTextInputLayoutCurrencyRobot.apply {
             type("20000.45")
-            checkText(localeHelper.applyTo("20,000.45"))
+            checkText(localeHelper.applyToCurrency("20,000.45"))
         }
     }
 
@@ -89,7 +101,7 @@ class SampleActivityTest {
     fun testInsideTextInputLayoutCurrencyInvalidInput() {
         insideTextInputLayoutCurrencyRobot.apply {
             type("000000000000")
-            checkText(localeHelper.applyTo("0"))
+            checkText(localeHelper.applyToCurrency("0"))
         }
     }
 
@@ -98,7 +110,7 @@ class SampleActivityTest {
     fun testInsideTextInputLayoutCurrencyMultipleDecimalSeparatorsInput() {
         insideTextInputLayoutCurrencyRobot.apply {
             type("2.5.0")
-            checkText(localeHelper.applyTo("2.50"))
+            checkText(localeHelper.applyToCurrency("2.50"))
         }
     }
 
@@ -107,7 +119,7 @@ class SampleActivityTest {
     fun testInsideTextInputLayoutCurrencyIgnoringGroupingSeparatorsInput() {
         insideTextInputLayoutCurrencyRobot.apply {
             type("4,5,0,0,0,0,0")
-            checkText(localeHelper.applyTo("4,500,000"))
+            checkText(localeHelper.applyToCurrency("4,500,000"))
         }
     }
 
@@ -118,7 +130,7 @@ class SampleActivityTest {
             type("00000.4533")
             pressDeleteKey(3)
             type("00")
-            checkText(localeHelper.applyTo("0"))
+            checkText(localeHelper.applyToCurrency("0"))
         }
     }
 
@@ -177,8 +189,13 @@ class SampleActivityTest {
 
         currencySpinnerRobot.selectItem(symbol)
 
-        noDecimalCurrencyRobot.checkText((localeHelper.applyTo("100,000", symbol)))
-        decimalCurrencyRobot.checkText((localeHelper.applyTo("200,000", symbol)))
-        insideTextInputLayoutCurrencyRobot.checkText((localeHelper.applyTo("300,000", symbol)))
+        noDecimalCurrencyRobot.checkText((localeHelper.applyToCurrency("100,000", symbol)))
+        decimalCurrencyRobot.checkText((localeHelper.applyToCurrency("200,000", symbol)))
+        insideTextInputLayoutCurrencyRobot.checkText(
+            (localeHelper.applyToCurrency(
+                "300,000",
+                symbol
+            ))
+        )
     }
 }

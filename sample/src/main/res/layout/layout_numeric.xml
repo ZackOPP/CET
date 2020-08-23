@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="vertical"
+    tools:ignore="HardcodedText" >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="NumericEditText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Simple Numeric Edit Text (No decimals)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <com.zksolution.cet.NumericEditText
+        android:id="@+id/noDecimalNumericEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Simple Numeric Edit Text (2 Decimals)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <com.zksolution.cet.NumericEditText
+        android:id="@+id/decimalNumericEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:decimalPlaces="2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/numericAmountLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="NumericEditText inside TextInputLayout">
+
+        <com.zksolution.cet.NumericEditText
+            android:id="@+id/insideTextInputLayoutNumericEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="numberDecimal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:decimalPlaces="2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</merge>

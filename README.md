@@ -16,7 +16,7 @@ repositories {
 Then, in your module-level `build.gradle` file:
 ```gradle
 dependencies {
-    implementation 'com.github.ZackOPP:CET:1.0.0'
+    implementation 'com.github.ZackOPP:CET:1.1.0'
 }
 ```
 
@@ -24,9 +24,14 @@ dependencies {
 
 This is the first version I'm releasing about CET and so far, it contains only a `CurrencyEditText`.
 
+### NumericEditText :moneybag:
+
+It applies a 'Numeric Mask' which means it will properly render the grouping/decimal separators according to the current Locale of the device.
+
 ### CurrencyEditText :moneybag:
 
-It applies a 'Currency Mask' which means it will properly render the grouping/decimal separators and the currency symbol according to the current Locale of the device. However, you may replace the currency symbol by whatever string value you need.
+This is an extension of NumericEditText. It applies the same mask and in addition it shows the currency symbol according to the current Locale of the device.
+However, you may replace the currency symbol by whatever string value you need.
 
 ## Sample :gift:
 
@@ -38,7 +43,6 @@ So far, it shows the different ways that you can use the `CurrencyEditText` with
 ## Coming soon :dart:
 
 I want to add the following EditText in the next versions (the names might change):
-- NumericEditText: Similar than the CurrencyEditText but with no currency symbol
 - PinCodeEditText: This will be a view that contains N EditTexts in which the user will be able to type only 1 value in each of them. The focus will be moved to the next EditText once the user types a value in one of them.
 
 ## License :page_with_curl:

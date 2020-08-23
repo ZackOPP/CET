@@ -6,7 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatSpinner
-import kotlinx.android.synthetic.main.activity_sample.*
+import kotlinx.android.synthetic.main.layout_currency.*
 
 class SampleActivity : AppCompatActivity() {
 

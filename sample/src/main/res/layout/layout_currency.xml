@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:orientation="vertical"
+    tools:ignore="HardcodedText" >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="CurrencyEditText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Set currency symbol"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Simple Currency Edit Text (No decimals)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <com.zksolution.cet.CurrencyEditText
+        android:id="@+id/noDecimalCurrencyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Simple Currency Edit Text (2 Decimals)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <com.zksolution.cet.CurrencyEditText
+        android:id="@+id/decimalCurrencyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:decimalPlaces="2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/amountLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="CurrencyEditText inside TextInputLayout">
+
+        <com.zksolution.cet.CurrencyEditText
+            android:id="@+id/insideTextInputLayoutCurrencyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="numberDecimal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:decimalPlaces="2" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</merge>
